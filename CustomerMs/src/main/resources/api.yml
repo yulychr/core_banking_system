@@ -81,6 +81,7 @@ paths:
         - customer
       summary: List all customers
       description: Retrieves a list of all customers in the system.
+      operationId: getAllCustomers
       responses:
         "200":
           description: Successfully retrieved the list of customers
@@ -92,14 +93,13 @@ paths:
                   $ref: "#/components/schemas/Customer"
         "404":
           description: Customers not found.
-        "500":
-          description: Internal server error.
   /customers/{id}:
     get:
       tags:
         - customer
       summary: Retrieve a customer details by id
       description: Retrieve a customer details by id
+      operationId: getCustomerId
       parameters:
         - name: id
           in: path
@@ -120,17 +120,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ApiResponse"
-        "500":
-          description: Internal server error.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ApiResponse"
     put:
       tags:
         - customer
       summary: Update an existing customer by ID
       description: Updates the details of an existing customer identified by the `id` provided in the path.
+      operationId: updateCutomer
       parameters:
         - name: id
           in: path
@@ -199,6 +194,7 @@ paths:
         - customer
       summary: Delete customer by id
       description: Delete customer by id
+      operationId: deleteCustomer
       parameters:
         - name: id
           in: path
@@ -259,7 +255,7 @@ components:
           example: "yuly@gmail.com"
       xml:
         name: order
-    ApiResponse:
+    ModelApiResponse:
       type: object
       properties:
         code:
