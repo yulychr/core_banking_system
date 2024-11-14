@@ -54,7 +54,6 @@ public class CustomerController {
             customer.setId(id);
             Customer customerUpdate = customerService.savedCustomer(customer);
             return ResponseEntity.status(200).body(customerUpdate);
-
         }
         return ResponseEntity.status(404).build();
     }
